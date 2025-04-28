@@ -95,7 +95,7 @@ class DebugWriter
             'level' => $level,
             'data' => $data,
         ];
-        if (ApplicationType::fromRequest($GLOBALS['TYPO3_REQUEST'])->isBackend()) {
+        if (isset($GLOBALS['TYPO3_REQUEST']) && ApplicationType::fromRequest($GLOBALS['TYPO3_REQUEST'])->isBackend()) {
             DebugUtility::debug($parameters, $parameters['extKey']);
         } else {
             echo $message . ':<br/>';
